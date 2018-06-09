@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>NewJoke</title>
+</head>
+<body>
+
+<h2>Create new joke</h2>
+
+
+
+<form name='f' action="#" th:action="@{/new}" th:object="${jokeForm}" method='POST'>
+    <table>
+        <tr>
+            <td>Joke:</td>
+            <td>
+                <input type="text" th:field="*{content}" />
+            </td>
+        </tr>
+        <tr>
+            <td>Select Category:</td>
+            <td>
+                <select th:field="*{category}">
+                    <option th:each="cat : ${categories}"
+                            th:value="${cat.id}"
+                            th:utext="${cat.name}"/>
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td><input name="submit" type="submit" value="submit" /></td>
+        </tr>
+    </table>
+</form>
+
+<br/>
+<br/>
+
+<form th:action="@{/}" method="get">
+    <button type="submit">View all jokes</button>
+</form>
+
+</body>
+
+</html>
