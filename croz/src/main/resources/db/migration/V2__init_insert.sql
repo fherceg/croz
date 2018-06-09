@@ -6,3 +6,4 @@ insert into joke(id, content) values(1, 'Guraju se dvije plavuše na krevetu i j
 insert into joke(id, content) values(1, 'Izlazi policajac iz pekare i nailazi na svog prijatelja pa mu kaže: Ako pogodiš koliko imam krafni u džepu dam ti obje!');
 insert into joke(id, content) values(2, 'Upoznaj plavuša nekog lika u noćnom klubu i on joj se pohvali: Ja sam plastični kirurg! A plavuša će na to: Jao, a izgledate kao pravi!');
 insert into joke(id, content) values(3, 'Kako prometni policajac smanjuje gužvu na kružnom toku? Ode na pauzu.');
+insert into joke(id, content) values(1, 'Idu dva komarca ulicom jedan zaspe i kaže "zzzz"');
