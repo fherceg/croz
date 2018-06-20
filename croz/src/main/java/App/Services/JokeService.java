@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -18,7 +19,25 @@ public class JokeService {
         for (Joke i : jokeRepository.findAll()){
             allJokes.add(i);
         }
+        Collections.sort(allJokes);
         return allJokes;
+    }
+
+    public List<Joke> getJokesPage(Integer pageNumber){
+        ArrayList<Joke> jokesPage = new ArrayList<>();
+        Integer lastIndex;
+        if(pageNumber <= 0){
+            return new ArrayList<Joke>();
+        }
+        if(pageNumber - 1  > this.getJokeRepositoryList().size()/10){
+            return new ArrayList<Joke>();
+        }
+        lastIndex = pageNumber*10;
+        if(lastIndex > this.getJokeRepositoryList().size()){
+            lastIndex = this.getJokeRepositoryList().size();
+        }
+        jokesPage.addAll(this.getJokeRepositoryList().subList(10*(pageNumber-1), lastIndex));
+        return jokesPage;
     }
 
     public Joke findByContent(String content){

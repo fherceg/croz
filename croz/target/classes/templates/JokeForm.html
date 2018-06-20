@@ -5,9 +5,16 @@
 </head>
 <body>
 
-<h2>Create new joke</h2>
+<br/>
+<br/>
 
+<form th:action="@{/}" method="get">
+    <button type="submit">View all jokes</button>
+</form>
 
+<br/>
+
+<h1>Create new joke</h1>
 
 <form name='f' action="#" th:action="@{/new}" th:object="${jokeForm}" method='POST'>
     <table>
@@ -37,9 +44,6 @@
 <br/>
 <br/>
 
-<form th:action="@{/}" method="get">
-    <button type="submit">View all jokes</button>
-</form>
 
 </body>
 

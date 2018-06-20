@@ -73,6 +73,9 @@ public class Joke implements Comparable<Joke>{
 
     @Override
     public int compareTo(Joke joke) {
+        if(((joke.getLikes()-joke.getDislikes()) - (this.getLikes()-this.getDislikes())) == 0){
+            return joke.getLikes()-this.getLikes();
+        }
         return (joke.getLikes()-joke.getDislikes()) - (this.getLikes()-this.getDislikes());
     }
 }

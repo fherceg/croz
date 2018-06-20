@@ -4,10 +4,23 @@
     <meta charset="UTF-8" />
     <title>All Jokes</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+
 </head>
 <body>
+
+<br/>
+<br/>
+
+<div>
+    <form th:action="@{new}" method="get">
+        <button type="submit">New Joke</button>
+    </form>
+</div>
+
+<br/>
+
 <h1>All jokes</h1>
-<br/><br/>
+
 <div>
     <table border="1">
         <tr>
@@ -19,7 +32,7 @@
             <th>Likes - Dislikes</th>
         </tr>
         <tr th:each ="joke : ${jokes}">
-            <td th:utext="${jokes.indexOf(joke)}+1">...</td>
+            <td th:utext="${currentPageNumber-1}*10+${jokes.indexOf(joke)}+1">...</td>
             <td th:utext="${categoryService.findById(joke).getName()}">...</td>
             <td th:utext="${joke.content}">...</td>
             <td th:utext="${joke.likes}">...</td>
@@ -40,12 +53,23 @@
 </div>
 
 <br/>
-<br/>
 
-<div>
-    <form th:action="@{/new}" method="get">
-        <button type="submit">New Joke</button>
-    </form>
+<div class="pagination">
+    <a href="index.html" th:href="@{|?page=${currentPageNumber-1}|}">&laquo;</a>
+    <tr th:each="i : ${#numbers.sequence(0, numberOfPages, 1)}">
+
+        <a href="index.html" th:href="@{|?page=${i+1}|}" th:text="|${i+1}|">"|${i+1}|"</a>
+
+    </tr>
+    <a href="index.html" th:href="@{|?page=${currentPageNumber+1}|}">&raquo;</a>
 </div>
+
+<http>
+
+    ...
+    <logout/>
+
+</http>
+
 </body>
 </html>

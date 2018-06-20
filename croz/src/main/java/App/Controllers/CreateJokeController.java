@@ -8,6 +8,7 @@ import App.Services.CategoryService;
 import App.Services.CreateJokeService;
 import App.Services.JokeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import javax.validation.Valid;
 
 
 @Controller
+@EnableWebSecurity
 public class CreateJokeController {
     @Autowired
     private CategoryService categoryService;

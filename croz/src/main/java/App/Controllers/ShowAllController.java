@@ -19,11 +19,12 @@ public class ShowAllController {
     private CategoryService categoryService;
 
     @GetMapping
-    public String showAll(Model model){
-        List<Joke> jokeList = jokeService.getJokeRepositoryList();
-        Collections.sort(jokeList);
+    public String showAll(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNumber){
+        List<Joke> jokeList = jokeService.getJokesPage(pageNumber);
         model.addAttribute("jokes", jokeList);
         model.addAttribute("categoryService", categoryService);
+        model.addAttribute("currentPageNumber", pageNumber);
+        model.addAttribute("numberOfPages", jokeService.getJokeRepositoryList().size() /10);
         return "index";
     }
 
